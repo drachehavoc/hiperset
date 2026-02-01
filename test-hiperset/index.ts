@@ -26,23 +26,23 @@ export { }
 // hiperset: load: []          // ERR: 831f488c-ae3b-449a-b10a-0b45b3835c22
 // hiperset: load: new Date()  // ERR: 831f488c-ae3b-449a-b10a-0b45b3835c22
 
-// SINTAXE ERRORS: repeted files
-hiperset: load: {
-  "__path/to/file/inline01.ts"       // ERR: a7d488e6-f1b0-4306-acb9-e46d362458aa
-  "__path/to/file01.ts"              // ERR: a7d488e6-f1b0-4306-acb9-e46d362458aa
-  namespace2: "__path/to/file04.ts"  // ERR: 406b17d7-63f9-4389-a65e-ac8631b1040a
-  namespace3: "__path/to/file05.ts"  // ERR: 406b17d7-63f9-4389-a65e-ac8631b1040a
-}
+// // SINTAXE ERRORS: repeted files
+// hiperset: load: {
+//   "__path/to/file/inline01.ts"       // ERR: a7d488e6-f1b0-4306-acb9-e46d362458aa
+//   "__path/to/file01.ts"              // ERR: a7d488e6-f1b0-4306-acb9-e46d362458aa
+//   namespace2: "__path/to/file04.ts"  // ERR: 406b17d7-63f9-4389-a65e-ac8631b1040a
+//   namespace3: "__path/to/file05.ts"  // ERR: 406b17d7-63f9-4389-a65e-ac8631b1040a
+// }
 
 // LOAD INLINE
-hiperset: load: "__path/to/file/inline01.ts"  // importa o arquivo01 e carrega seu conteúdo sem namespace
-hiperset: load: "__path/to/file/inline02.ts"  // importa o arquivo02 e carrega seu conteúdo sem namespace, sobrescrevendo o conteúdo anterior se houver conflito
+hiperset: load: "./__path/to/file/inline01.ts"  // importa o arquivo01 e carrega seu conteúdo sem namespace
+hiperset: load: "./__path/to/file/inline02.ts"  // importa o arquivo02 e carrega seu conteúdo sem namespace, sobrescrevendo o conteúdo anterior se houver conflito
 
 // LOAD BLOCK
 hiperset: load: { 
-  "__path/to/file01.ts"              // importa o arquivo01 e carrega seu conteúdo sem namespace
-  "__path/to/file02.ts"              // importa o arquivo02 e carrega seu conteúdo sem namespace, sobrescrevendo o conteúdo anterior se houver conflito
-  namespace1: "__path/to/file03.ts"  // importa o arquivo03 e carrega seu conteúdo dentro do namespace1
-  namespace2: "__path/to/file04.ts"  // importa o arquivo04 e carrega seu conteúdo dentro do namespace2
-  namespace3: "__path/to/file05.ts"  // importa o arquivo04 e carrega seu conteúdo dentro do namespace2
+  "./__path/to/file01.ts"              // importa o arquivo01 e carrega seu conteúdo sem namespace
+  "./__path/to/file02.ts"              // importa o arquivo02 e carrega seu conteúdo sem namespace, sobrescrevendo o conteúdo anterior se houver conflito
+  namespace1: "./__path/to/file03.ts"  // importa o arquivo03 e carrega seu conteúdo dentro do namespace1
+  namespace2: "./__path/to/file04.ts"  // importa o arquivo04 e carrega seu conteúdo dentro do namespace2
+  namespace3: "./__path/to/file05.ts"  // importa o arquivo04 e carrega seu conteúdo dentro do namespace2
 }

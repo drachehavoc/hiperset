@@ -2,7 +2,12 @@
   "compilerOptions": {
     "allowJs": true,
     "module": "CommonJS",
-    "target": "ESNext"
+    "target": "ESNext",
+    "plugins": [
+      {
+        "name": "@hiperset/tsserver"
+      }
+    ]
   },
   "include": ["index.ts"]
 }

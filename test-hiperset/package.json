@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "links": "npm link ../@hiperset/eslint ../@hiperset/eslint",
+    "links": "npm link ../@hiperset/eslint ../@hiperset/tsserver",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

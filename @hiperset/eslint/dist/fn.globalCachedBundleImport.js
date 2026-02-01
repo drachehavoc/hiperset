@@ -21,25 +21,31 @@ export default (entry) => {
         external: ['node:*'], // Ajuda o esbuild a ignorar coisas que ele não precisa carregar
     });
     const code = result.outputFiles[0].text;
-    const vmContext = vm.createContext({
-        console,
-        require,
-        module,
-        __dirname: fs.realpathSync('.'),
-        __filename: entry,
-        process,
-        Buffer,
-        setTimeout,
-        setImmediate,
-        clearImmediate,
-        clearTimeout,
-    });
-    const script = new vm.Script(code, { filename: entry });
-    const moduleExports = {};
-    const moduleObj = { exports: moduleExports };
-    vmContext.module = moduleObj;
-    script.runInContext(vmContext);
-    bundleCache.set(entry, { module: moduleObj.exports, mtime: stats.mtimeMs });
-    return moduleObj.exports;
+    try {
+        const vmContext = vm.createContext({
+            console,
+            // require,
+            // module,
+            __dirname: fs.realpathSync('.'),
+            __filename: entry,
+            process,
+            Buffer,
+            setTimeout,
+            setImmediate,
+            clearImmediate,
+            clearTimeout,
+        });
+        const script = new vm.Script(code, { filename: entry });
+        const moduleExports = {};
+        const moduleObj = { exports: moduleExports };
+        vmContext.module = moduleObj;
+        script.runInContext(vmContext);
+        bundleCache.set(entry, { module: moduleObj.exports, mtime: stats.mtimeMs });
+        return moduleObj.exports;
+    }
+    catch (err) {
+        console.error(`Erro ao executar o bundle em VM para o arquivo: ${entry}`);
+        throw err;
+    }
 };
 //# sourceMappingURL=fn.globalCachedBundleImport.js.map

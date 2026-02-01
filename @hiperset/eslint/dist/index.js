@@ -1,5 +1,6 @@
 import { TSESLint, TSESTree } from "@typescript-eslint/utils";
 import { getStaticValue } from "@typescript-eslint/utils/ast-utils";
+import $path from "path";
 import getBundleImportSync from "./fn.globalCachedBundleImport.js";
 const _brand_ = {
     name: 'Hiperset',
@@ -12,13 +13,7 @@ export class Hiperset {
     /**
      * Definição do ESLint Plugin
      */
-    static plugin = {
-        hiperset: {
-            rules: {
-                plugin: new Hiperset()
-            }
-        }
-    };
+    static plugin = { hiperset: { rules: { plugin: new Hiperset() } } };
     /**
      * Meta dados da regra
      */
@@ -133,8 +128,11 @@ export class Hiperset {
             && typeof node.expression.value === "string";
     }
     #load_importRulesFromFile(context, data) {
+        const folder = context.filename.replace(/[^\/\\]+$/, "");
         const { node, path } = data;
-        const absolutePath = path; // @todo: resolver path relativo ao arquivo atual    
+        const absolutePath = path.startsWith("./")
+            ? $path.resolve(folder, path)
+            : $path.resolve(process.cwd(), path);
         try {
             const bundle = getBundleImportSync(absolutePath);
             if (!data.namespace) {
@@ -147,7 +145,7 @@ export class Hiperset {
             context.report({
                 node,
                 messageId: "tempError",
-                data: { detail: `@TODO: c1f3f3e3-Bla-Bla-Bla Erro ao importar o arquivo: '${absolutePath}'\n- ${err}` }
+                data: { detail: `@TODO: d8dca4d0-2696-4475-b83b-00f710bb8cf9 Erro ao importar o arquivo: '${absolutePath}'\n- ${err}` }
             });
         }
     }
@@ -237,7 +235,8 @@ export class Hiperset {
      *
      */
     create(context) {
-        console.log(">> ESLINT PLUGIN hiperset loaded.");
+        this.#ruleFilesToLoad = [];
+        this.#loadedRules = {};
         return {
             LabeledStatement: (node) => {
                 const name = node.label.name;
