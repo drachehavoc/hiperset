@@ -1,0 +1,22 @@
+{
+  "name": "test-hiperset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "links": "npm link ../@hiperset/eslint ../@hiperset/eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jiti": "^2.6.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "typescript-eslint": "^8.54.0"
+  }
+}
