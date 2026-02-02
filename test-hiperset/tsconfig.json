@@ -9,5 +9,5 @@
       }
     ]
   },
-  "include": ["index.ts"]
+  "include": ["test.ts"]
 }

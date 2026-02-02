@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "links": "npm link ../@hiperset/eslint ../@hiperset/tsserver",
+    "links": "npm link ../@/debug-to-tmp ../@hiperset/eslint ../@hiperset/tsserver",
+    "toias": "z() { printf \"%s\n\n\" \"--- $p\"; cat $p; printf \"\n\n---\n\"; }; clear; p=package.json;z; p=tsconfig.json;z; p=node_modules/@hiperset/tsserver/src/index.ts;z; p=node_modules/@hiperset/tsserver/dist/index.js;z; p=node_modules/@hiperset/tsserver/package.json;z; p=.vscode/settings.json;z;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/node": "^25.2.0",
     "jiti": "^2.6.1",
     "tsx": "^4.21.0",
     "typescript": "^5.5.4"

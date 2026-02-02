@@ -1,3 +1,4 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsserver.pluginPaths"        : [ "./node_modules" ],
+  "typescript.tsserver.useSyntaxServer"    : "never",
 }

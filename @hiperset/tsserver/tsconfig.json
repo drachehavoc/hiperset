@@ -10,10 +10,11 @@
     "module": "commonjs",
     "target": "esnext",
     "types": [],
+    "esModuleInterop": true,
+
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
-    // and npm install -D @types/node
 
     // Other Outputs
     "sourceMap": true,

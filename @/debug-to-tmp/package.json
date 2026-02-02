@@ -1,0 +1,10 @@
+{
+  "name": "debug-to-tmp",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.2.0"
+  }
+}
