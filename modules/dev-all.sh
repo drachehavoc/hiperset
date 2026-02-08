@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# 1. Pega a lista de caminhos absolutos gerada pelo seu script
-# Usamos um array para lidar corretamente com cada caminho
-PATHS=($(./modules-list.sh))
-
-# Variáveis para montar o comando do concurrently
+BASE_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+PATHS=($("$BASE_DIR/modules-list.sh"))
 NAMES=""
 CMDS=()
 
@@ -12,11 +9,9 @@ echo "orchestrating dev mode for ${#PATHS[@]} modules..."
 
 for path in "${PATHS[@]}"; do
     # Extrai o nome do pacote diretamente do package.json (mais preciso que o nome da pasta)
-    NAME=$(node -p "require('$path/package.json').name")
-    
+    NAME=$(node -p "require('$path/package.json').name")    
     # Monta a lista de nomes separada por vírgula para o concurrently
     if [ -z "$NAMES" ]; then NAMES="$NAME"; else NAMES="$NAMES,$NAME"; fi
-    
     # Adiciona o comando formatado ao array de comandos
     CMDS+=("npm run dev --prefix $path -- --preserveWatchOutput")
 done
