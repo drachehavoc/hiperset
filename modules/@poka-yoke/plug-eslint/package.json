@@ -1,0 +1,14 @@
+{
+  "name": "@poka-yoke/plug-eslint",
+  "version": "0.0.1",
+  "description": "",
+  "license": "GPL-3.0-or-later",
+  "author": "Drache-Havoc",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "link-all-modules": "chmod +x ../../modules-list.sh; npm link $(../../modules-list.sh)",
+    "dev": "npm install; npm run link-all-modules; tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

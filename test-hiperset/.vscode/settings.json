@@ -1,4 +1,0 @@
-{
-  "typescript.tsserver.pluginPaths"        : [ "./node_modules" ],
-  "typescript.tsserver.useSyntaxServer"    : "never",
-}

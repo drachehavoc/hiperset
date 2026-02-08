@@ -1,0 +1,14 @@
+{
+
+  "terminal.integrated.env.linux": {
+    "PROMPT_COMMAND": "source ${workspaceFolder}/ps1.sh; unset PROMPT_COMMAND"
+  },
+
+  "files.exclude": {
+    "**/.*"          : true,
+    "**/node_modules": true,
+    "**/dist"        : true,
+    "**/.cache"      : true,
+    "**/*lock*"      : true,
+  },
+}
